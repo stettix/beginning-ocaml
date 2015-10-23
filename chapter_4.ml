@@ -47,6 +47,13 @@ let rec member a l =
 let rec make_set l =
   match l with
     [] -> []
-  | [h] -> [h]
   | h :: t -> let s = make_set t in
     if member h s then s else h :: s
+
+let rec rev_inner l acc =
+  match l with
+    [] -> acc
+  | h :: t -> rev_inner t (h :: acc)
+
+let rec rev2 l =
+	rev_inner l []
