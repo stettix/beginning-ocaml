@@ -30,14 +30,13 @@ let rec drop_last l =
   | [h] -> []
   | h :: t -> h :: drop_last t
 
-let rec drop_last_inner l acc =
-  match l with
-    [] -> acc
-  | [h] -> acc
-  | h :: t -> drop_last_inner t (h :: acc)
-
 let rec drop_last_tr l =
-  rev (drop_last_inner l [])
+  let rec drop_last_inner l acc =
+    match l with
+      [] -> acc
+    | [h] -> acc
+    | h :: t -> drop_last_inner t (h :: acc)
+  in rev (drop_last_inner l [])
 
 let rec member a l =
   match l with
@@ -50,10 +49,9 @@ let rec make_set l =
   | h :: t -> let s = make_set t in
     if member h s then s else h :: s
 
-let rec rev_inner l acc =
-  match l with
-    [] -> acc
-  | h :: t -> rev_inner t (h :: acc)
-
 let rec rev2 l =
-	rev_inner l []
+  let rec rev_inner l acc =
+    match l with
+      [] -> acc
+    | h :: t -> rev_inner t (h :: acc)
+  in rev_inner l []
