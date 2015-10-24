@@ -17,7 +17,3 @@ let suite =
     ["test rev">:: test_rev;
    	 "test palindrome">:: test_palindrome]
   ;;
-
-let () =
-  run_test_tt_main suite
-;;
