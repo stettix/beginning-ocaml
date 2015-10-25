@@ -24,4 +24,3 @@ let suite =
     ["test smallest">:: test_smallest;
     "test smallest_or_zero">:: test_smallest_or_zero;
     "test intsqrt">:: test_intsqrt]
-
