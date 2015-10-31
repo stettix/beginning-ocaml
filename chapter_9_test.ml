@@ -28,8 +28,14 @@ let test_truncate test_ctxt =
   assert_equal [[]; []; []] (truncate 0 ll);
   assert_equal [] (truncate 3 [])
 
+let test_heads test_ctxt =
+  assert_equal [] (heads 42 []);
+  assert_equal [1; 1] (heads 42 [l1; l2]);
+  assert_equal [1; 42; 1] (heads 42 [l1; []; l2])
+
 let suite =
   "Chapter 9 test suite">:::
     ["test member_all">:: test_member_all;
      "test mapll">:: test_mapll;
-     "test test_truncate">:: test_truncate];;
+     "test test_truncate">:: test_truncate;
+     "test test_heads">:: test_heads];;

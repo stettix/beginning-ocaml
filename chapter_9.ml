@@ -23,3 +23,10 @@ let mapll f =
 
 let truncate n ls =
   map (take n) ls
+
+let heads default ls =
+  let head_or_default d l =
+    match l with
+    [] -> d
+   | h :: _ -> h in
+  map (head_or_default default) ls
