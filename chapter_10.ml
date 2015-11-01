@@ -46,3 +46,21 @@ let rec map f s =
   match s with
     Nil -> Nil
   | Cons (h, t) -> Cons ((f h), map f t)
+
+
+type expr =
+  Num of int
+| Add of expr * expr
+| Subtract of expr * expr
+| Multiply of expr * expr
+| Divide of expr * expr
+| Pow of expr * expr
+
+let rec evaluate e =
+  match e with
+    Num n -> n
+  | Add (e, e') -> evaluate e + evaluate e'
+  | Subtract (e, e') -> evaluate e - evaluate e'
+  | Multiply (e, e') -> evaluate e * evaluate e'
+  | Divide (e, e') -> evaluate e / evaluate e'
+  | Pow (e, e') -> int_of_float((float_of_int (evaluate e)) ** (float_of_int (evaluate e')))

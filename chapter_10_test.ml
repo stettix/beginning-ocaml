@@ -45,6 +45,12 @@ let test_map test_ctxt =
     assert_equal (Cons (2, Nil)) (map add1 s1);
     assert_equal (Cons (2, Cons (3, Cons (4, Nil)))) (map add1 s2)
 
+let test_pow test_ctxt =
+  assert_equal 8 (evaluate (Pow (Num 2, Num 3)))
+
+let test_divide test_ctxt =
+  assert_equal 2 (evaluate (Divide (Num 6, Num 3)))
+
 let suite =
   "Chapter 10 test suite">:::
     ["test area">:: test_area;
@@ -52,4 +58,6 @@ let suite =
     "test ordered_rects">:: test_ordered_rects;
     "test take">:: test_take;
     "test drop">:: test_drop;
-    "test map">:: test_map;]
+    "test map">:: test_map;
+    "test exponent to power expression">:: test_pow;
+    "test division">:: test_divide]
