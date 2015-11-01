@@ -31,6 +31,11 @@ let rec sort l =
     [] -> []
   | h :: t -> insert h (sort t) (<=)
 
+let rec sort_cmp l cmp =
+  match l with
+    [] -> []
+  | h :: t -> insert h (sort t) cmp
+
 let rec rev_sort l =
   match l with
     [] -> []
