@@ -1,6 +1,14 @@
+open Chapter_4;;
+open Chapter_6;;
+
 type 'a tree =
     Lf
   | Br of 'a * 'a tree * 'a tree
+
+let rec tree_map f tr =
+  match tr with
+    Lf -> Lf
+  | Br (x, l, r) -> Br (f x, tree_map f l, tree_map f r)
 
 let rec size tr =
   match tr with
@@ -33,7 +41,7 @@ let rec list_of_tree tr =
 let rec contains x tr =
   match tr with
     Lf -> false
-  | Br (v, l, r) -> v = x or (contains x l) or (contains x r)
+  | Br (v, l, r) -> v = x || (contains x l) || (contains x r)
 
 let rec flip tr =
   match tr with
@@ -46,5 +54,16 @@ let rec eq_shape tr1 tr2 =
   | Br (_, l1, r1), Br (_, l2, r2) -> (eq_shape l1 l2) && (eq_shape r1 r2)
   | _ -> false
 
+type 'a ntree =
+    NLf
+  | NBr of 'a list * 'a ntree * 'a ntree
 
+let rec ntree_size tr =
+  match tr with
+    NLf -> 0
+  | NBr (xs, l, r) -> length xs + (ntree_size l) + (ntree_size r)
 
+let rec ntree_map f tr =
+  match tr with
+    NLf -> NLf
+  | NBr (xs, l, r) -> NBr (map f xs, ntree_map f l, ntree_map f r)
