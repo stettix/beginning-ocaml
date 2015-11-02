@@ -11,4 +11,5 @@ let () =
   run_test_tt_main Chapter_8_test.suite;
   run_test_tt_main Chapter_9_test.suite;
   run_test_tt_main Chapter_10_test.suite;
+  run_test_tt_main Chapter_11_test.suite;
 ;;
