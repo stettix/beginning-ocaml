@@ -17,10 +17,8 @@ let width (r: rect) =
 
 let portrait (r: rect) =
   match r with
-    Square _ -> r
-  | Rectangle (w, h) ->
-    if w <= h then r
-    else Rectangle(h, w)
+    Rectangle(w, h) when h < w -> Rectangle (h, w)
+  | r -> r
 
 let ordered_rects (rs: rect list) =
   let cmp r1 r2 = (width r1) <= (width r2) in
